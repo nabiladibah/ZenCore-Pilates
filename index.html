@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,29 +11,40 @@
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="nav-brand">ZenCore Pilates</div>
-    <div class="nav-links">
-      <a href="#">Classes</a>
-      <a href="#">Instructors</a>
-      <a href="#">Schedule</a>
-      <a href="#" id="btn-login">Login</a>
-      <a href="#" id="btn-register" class="btn-primary">Get Started</a>
-    </div>
+    <ul class="nav-links">
+      <li><a href="#">Beranda</a></li>
+      <li><a href="src/pages/classes.html">Kelas</a></li>
+      <li><a href="src/pages/schedule.html">Jadwal</a></li>
+      <li><a href="src/pages/login.html" class="btn-login">Masuk</a></li>
+      <li><a href="src/pages/register.html" class="btn-register">Daftar</a></li>
+    </ul>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
-      <h1>Balance, Strength, and Wellness in Every Movement.</h1>
-      <p>Book your pilates class today and start your journey to a stronger, more centered you.</p>
-      <a href="#" class="btn-primary">Explore Classes</a>
+      <h1>Temukan Keseimbangan<br/>Tubuh & Pikiran</h1>
+      <p>Studio pilates premium dengan instruktur berpengalaman.<br/>Booking kelas sesuai jadwalmu.</p>
+      <a href="src/pages/register.html" class="btn-primary">Mulai Sekarang</a>
     </div>
   </section>
 
-  <!-- CLASSES PREVIEW -->
-  <section class="section">
-    <h2>Our Classes</h2>
-    <div class="class-grid" id="class-list">
-      <p>Loading classes...</p>
+  <!-- FITUR -->
+  <section class="features">
+    <div class="feature-card">
+      <span class="icon">🧘</span>
+      <h3>Berbagai Kelas</h3>
+      <p>Mat, reformer, dan barre pilates untuk semua level.</p>
+    </div>
+    <div class="feature-card">
+      <span class="icon">📅</span>
+      <h3>Booking Mudah</h3>
+      <p>Reservasi kelas kapan saja, di mana saja.</p>
+    </div>
+    <div class="feature-card">
+      <span class="icon">👤</span>
+      <h3>Instruktur Tersertifikasi</h3>
+      <p>Dipandu oleh instruktur profesional berpengalaman.</p>
     </div>
   </section>
 
