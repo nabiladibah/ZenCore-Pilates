@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard – ZenCore Pilates</title>
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../../index.html" class="nav-brand">ZenCore <span>Pilates</span></a>
+    <ul class="nav-links">
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="classes.html">Classes</a></li>
+      <li><span id="user-name" style="color:#c47b7b; font-weight:500"></span></li>
+      <li><a href="#" id="btn-logout" class="btn-login">Sign Out</a></li>
+    </ul>
+  </nav>
+
+  <div class="dashboard">
+
+    <!-- WELCOME -->
+    <div class="dashboard-header">
+      <div>
+        <p class="section-tag">✦ Member Dashboard</p>
+        <h1>Welcome back, <span id="greeting-name">there</span> 🌸</h1>
+        <p>Here's what's coming up for you.</p>
+      </div>
+      <a href="schedule.html" class="btn-primary">Book a Class</a>
+    </div>
+
+    <!-- STATS -->
+    <div class="dash-stats">
+      <div class="dash-stat-card">
+        <h3 id="total-bookings">0</h3>
+        <p>Total Bookings</p>
+      </div>
+      <div class="dash-stat-card">
+        <h3 id="upcoming-bookings">0</h3>
+        <p>Upcoming Classes</p>
+      </div>
+      <div class="dash-stat-card">
+        <h3 id="completed-bookings">0</h3>
+        <p>Completed</p>
+      </div>
+    </div>
+
+    <!-- UPCOMING CLASSES -->
+    <div class="dash-section">
+      <h2>Upcoming Classes</h2>
+      <div id="upcoming-list" class="booking-list">
+        <p class="empty-msg">Loading...</p>
+      </div>
+    </div>
+
+    <!-- BOOKING HISTORY -->
+    <div class="dash-section">
+      <h2>Booking History</h2>
+      <div id="history-list" class="booking-list">
+        <p class="empty-msg">Loading...</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="module">
+    import { supabase } from '../lib/supabase.js'
+
+    // Cek auth
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) { window.location.href = 'login.html'; }
+
+    // Tampilkan nama
+    const { data: profile } = await supabase
+      .from('profiles').select('full_name').eq('id', user.id).single()
+
+    const name = profile?.full_name || user.email
+    document.getElementById('user-name').textContent = name
+    document.getElementById('greeting-name').textContent = name.split(' ')[0]
+
+    // Ambil bookings
+    const { data: bookings } = await supabase
+      .from('bookings')
+      .select(`*, schedules(date, time, room, class_types(name))`)
+      .eq('user_id', user.id)
+      .order('booked_at', { ascending: false })
+
+    const today = new Date().toISOString().split('T')[0]
+    const upcoming = bookings?.filter(b => b.schedules?.date >= today) || []
+    const history = bookings?.filter(b => b.schedules?.date < today) || []
+
+    document.getElementById('total-bookings').textContent = bookings?.length || 0
+    document.getElementById('upcoming-bookings').textContent = upcoming.length
+    document.getElementById('completed-bookings').textContent = history.length
+
+    function renderBookings(list, containerId) {
+      const el = document.getElementById(containerId)
+      if (!list.length) {
+        el.innerHTML = '<p class="empty-msg">No classes yet.</p>'
+        return
+      }
+      el.innerHTML = list.map(b => `
+        <div class="booking-card">
+          <div class="booking-info">
+            <h4>${b.schedules?.class_types?.name || 'Class'}</h4>
+            <p>📅 ${b.schedules?.date} &nbsp;⏰ ${b.schedules?.time?.slice(0,5)}</p>
+            <p>📍 ${b.schedules?.room || 'TBA'}</p>
+          </div>
+          <span class="booking-status status-${b.status}">${b.status}</span>
+        </div>
+      `).join('')
+    }
+
+    renderBookings(upcoming, 'upcoming-list')
+    renderBookings(history, 'history-list')
+
+    // Logout
+    document.getElementById('btn-logout').addEventListener('click', async () => {
+      await supabase.auth.signOut()
+      window.location.href = '../../index.html'
+    })
+  </script>
+</body>
+</html>

@@ -426,3 +426,116 @@
     margin-top: 1rem;
     min-height: 1.2rem;
   }
+  /* DASHBOARD */
+.dashboard {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+  
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+  }
+  
+  .dashboard-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #2d2020;
+    margin: 0.5rem 0;
+  }
+  
+  .dashboard-header p { color: #8a6060; }
+  
+  .dash-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .dash-stat-card {
+    background: white;
+    border: 1px solid #f0e0db;
+    border-radius: 14px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  .dash-stat-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: #c47b7b;
+    margin-bottom: 0.3rem;
+  }
+  
+  .dash-stat-card p {
+    font-size: 0.85rem;
+    color: #8a6060;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .dash-section {
+    margin-bottom: 2.5rem;
+  }
+  
+  .dash-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: #2d2020;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #f0e0db;
+  }
+  
+  .booking-list { display: flex; flex-direction: column; gap: 0.8rem; }
+  
+  .booking-card {
+    background: white;
+    border: 1px solid #f0e0db;
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: border-color 0.2s;
+  }
+  
+  .booking-card:hover { border-color: #c47b7b; }
+  
+  .booking-info h4 {
+    font-weight: 600;
+    color: #2d2020;
+    margin-bottom: 0.3rem;
+  }
+  
+  .booking-info p {
+    font-size: 0.85rem;
+    color: #8a6060;
+    margin-top: 0.2rem;
+  }
+  
+  .booking-status {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+  
+  .status-confirmed { background: #e8f5e9; color: #4caf50; }
+  .status-pending { background: #fff3e0; color: #ff9800; }
+  .status-cancelled { background: #fce4e4; color: #c47b7b; }
+  
+  .empty-msg {
+    color: #8a6060;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    border: 1px dashed #f0e0db;
+  }
