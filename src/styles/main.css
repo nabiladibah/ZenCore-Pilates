@@ -817,3 +817,19 @@
   }
   
   .btn-delete:hover { background: #c47b7b; color: white; }
+  .btn-cancel-booking {
+    background: none;
+    border: 1px solid #c47b7b;
+    color: #c47b7b;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+  }
+  
+  .btn-cancel-booking:hover {
+    background: #c47b7b;
+    color: white;
+  }

@@ -112,12 +112,32 @@
             <p>📅 ${b.schedules?.date} &nbsp;⏰ ${b.schedules?.time?.slice(0,5)}</p>
             <p>📍 ${b.schedules?.room || 'TBA'}</p>
           </div>
-          <span class="booking-status status-${b.status}">${b.status}</span>
+          <div style="display:flex; flex-direction:column; align-items:flex-end; gap:0.5rem">
+  <span class="booking-status status-${b.status}">${b.status}</span>
+  ${b.status === 'confirmed' || b.status === 'pending' 
+    ? `<button class="btn-cancel-booking" data-id="${b.id}">Cancel</button>`
+    : ''}
+</div>
         </div>
       `).join('')
     }
 
     renderBookings(upcoming, 'upcoming-list')
+    // Cancel booking handler
+document.querySelectorAll('.btn-cancel-booking').forEach(btn => {
+  btn.addEventListener('click', async () => {
+    if (!confirm('Cancel this booking?')) return
+    const { error } = await supabase
+      .from('bookings')
+      .update({ status: 'cancelled' })
+      .eq('id', btn.dataset.id)
+    if (!error) {
+      btn.closest('.booking-card').querySelector('.booking-status').className = 'booking-status status-cancelled'
+      btn.closest('.booking-card').querySelector('.booking-status').textContent = 'cancelled'
+      btn.remove()
+    }
+  })
+})
     renderBookings(history, 'history-list')
 
     // Logout
