@@ -14,6 +14,7 @@
     <ul class="nav-links">
       <li><a href="schedule.html">Schedule</a></li>
       <li><a href="classes.html">Classes</a></li>
+      <li id="admin-link" style="display:none"><a href="admin.html" class="btn-register">Admin Panel</a></li>
       <li><span id="user-name" style="color:#c47b7b; font-weight:500"></span></li>
       <li><a href="#" id="btn-logout" class="btn-login">Sign Out</a></li>
     </ul>
@@ -79,6 +80,9 @@
     const name = profile?.full_name || user.email
     document.getElementById('user-name').textContent = name
     document.getElementById('greeting-name').textContent = name.split(' ')[0]
+    if (profile?.role === 'admin') {
+  document.getElementById('admin-link').style.display = 'block'
+}
 
     // Ambil bookings
     const { data: bookings } = await supabase
