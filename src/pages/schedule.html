@@ -46,7 +46,7 @@
     const today = new Date().toISOString().split('T')[0]
     const { data: schedules } = await supabase
       .from('schedules')
-      .select(`*, class_types(name, level, duration_minutes)`)      .gte('date', today)
+      .select(`id, date, time, room, status, class_type_id, class_types(name, level, duration_minutes)`)
       .eq('status', 'active')
       .order('date')
       .order('time')
