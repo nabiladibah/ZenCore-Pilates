@@ -1,52 +1,110 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZenCore Pilates</title>
   <link rel="stylesheet" href="src/styles/main.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 </head>
 <body>
 
   <!-- NAVBAR -->
   <nav class="navbar">
-    <div class="nav-brand">ZenCore Pilates</div>
+    <div class="nav-brand">ZenCore <span>Pilates</span></div>
     <ul class="nav-links">
-      <li><a href="#">Beranda</a></li>
-      <li><a href="src/pages/classes.html">Kelas</a></li>
-      <li><a href="src/pages/schedule.html">Jadwal</a></li>
-      <li><a href="src/pages/login.html" class="btn-login">Masuk</a></li>
-      <li><a href="src/pages/register.html" class="btn-register">Daftar</a></li>
+      <li><a href="#">Home</a></li>
+      <li><a href="src/pages/classes.html">Classes</a></li>
+      <li><a href="src/pages/schedule.html">Schedule</a></li>
+      <li><a href="src/pages/login.html" class="btn-login">Sign In</a></li>
+      <li><a href="src/pages/register.html" class="btn-register">Join Us</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
-      <h1>Temukan Keseimbangan<br/>Tubuh & Pikiran</h1>
-      <p>Studio pilates premium dengan instruktur berpengalaman.<br/>Booking kelas sesuai jadwalmu.</p>
-      <a href="src/pages/register.html" class="btn-primary">Mulai Sekarang</a>
+      <p class="hero-tag">✦ Premium Pilates Studio</p>
+      <h1>Move with<br/>Intention.</h1>
+      <p class="hero-sub">Sculpt your body, calm your mind.<br/>Book a class that fits your rhythm.</p>
+      <div class="hero-btns">
+        <a href="src/pages/register.html" class="btn-primary">Get Started</a>
+        <a href="src/pages/classes.html" class="btn-secondary">View Classes</a>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <div class="badge-circle">
+        <p>Est.</p>
+        <p class="badge-year">2024</p>
+        <p>Jakarta</p>
+      </div>
     </div>
   </section>
 
-  <!-- FITUR -->
-  <section class="features">
-    <div class="feature-card">
-      <span class="icon">🧘</span>
-      <h3>Berbagai Kelas</h3>
-      <p>Mat, reformer, dan barre pilates untuk semua level.</p>
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stat-item">
+      <h2>500+</h2>
+      <p>Active Members</p>
     </div>
-    <div class="feature-card">
-      <span class="icon">📅</span>
-      <h3>Booking Mudah</h3>
-      <p>Reservasi kelas kapan saja, di mana saja.</p>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <h2>12</h2>
+      <p>Expert Instructors</p>
     </div>
-    <div class="feature-card">
-      <span class="icon">👤</span>
-      <h3>Instruktur Tersertifikasi</h3>
-      <p>Dipandu oleh instruktur profesional berpengalaman.</p>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <h2>20+</h2>
+      <p>Class Varieties</p>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <h2>4.9★</h2>
+      <p>Member Rating</p>
     </div>
   </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="features-header">
+      <p class="section-tag">Why ZenCore</p>
+      <h2>Everything you need<br/>to thrive</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🌸</div>
+        <h3>All Levels Welcome</h3>
+        <p>From beginner mat class to advanced reformer — we have the right class for you.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Easy Online Booking</h3>
+        <p>Reserve your spot anytime, anywhere. No calls, no hassle.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👩‍🏫</div>
+        <h3>Certified Instructors</h3>
+        <p>Our instructors are internationally certified and deeply passionate.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">✨</div>
+        <h3>Real-time Updates</h3>
+        <p>Get instant confirmation and live class availability updates.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Ready to start your journey?</h2>
+    <p>Join hundreds of women who found their strength at ZenCore.</p>
+    <a href="src/pages/register.html" class="btn-primary">Join for Free</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2024 ZenCore Pilates. All rights reserved.</p>
+  </footer>
 
   <script type="module" src="src/lib/supabase.js"></script>
 </body>
