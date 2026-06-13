@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schedule – ZenCore Pilates</title>
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../../index.html" class="nav-brand">ZenCore <span>Pilates</span></a>
+    <ul class="nav-links">
+      <li><a href="classes.html">Classes</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+      <li id="nav-auth"></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <p class="section-tag">✦ Plan Your Week</p>
+    <h1>Class Schedule</h1>
+    <p>Browse upcoming classes and reserve your spot.</p>
+  </div>
+
+  <div class="schedule-container">
+    <div id="schedule-list" class="schedule-list">
+      <p class="empty-msg">Loading schedule...</p>
+    </div>
+  </div>
+
+  <script type="module">
+    import { supabase } from '../lib/supabase.js'
+
+    // Cek auth
+    const { data: { user } } = await supabase.auth.getUser()
+    const navAuth = document.getElementById('nav-auth')
+    if (user) {
+      navAuth.innerHTML = `<a href="dashboard.html" class="btn-register">Dashboard</a>`
+    } else {
+      navAuth.innerHTML = `<a href="login.html" class="btn-login">Sign In</a>`
+    }
+
+    // Load schedules
+    const today = new Date().toISOString().split('T')[0]
+    const { data: schedules } = await supabase
+      .from('schedules')
+      .select(`*, class_types(name, level, duration_minutes), profiles(full_name)`)
+      .gte('date', today)
+      .eq('status', 'active')
+      .order('date')
+      .order('time')
+
+    const list = document.getElementById('schedule-list')
+
+    if (!schedules || schedules.length === 0) {
+      list.innerHTML = '<p class="empty-msg">No upcoming classes scheduled yet.</p>'
+    } else {
+      list.innerHTML = schedules.map(s => {
+        const date = new Date(s.date + 'T00:00:00')
+        const dayName = date.toLocaleDateString('en-US', { weekday: 'long' })
+        const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })
+        const time = s.time?.slice(0, 5)
+
+        return `
+          <div class="schedule-card">
+            <div class="schedule-date">
+              <span class="day">${dayName}</span>
+              <span class="date">${dateStr}</span>
+            </div>
+            <div class="schedule-info">
+              <h3>${s.class_types?.name || 'Class'}</h3>
+              <div class="schedule-meta">
+                <span>⏰ ${time}</span>
+                <span>⏱ ${s.class_types?.duration_minutes || 60} min</span>
+                <span>📍 ${s.room || 'Studio A'}</span>
+                <span>👩‍🏫 ${s.profiles?.full_name || 'TBA'}</span>
+              </div>
+            </div>
+            <div class="schedule-action">
+              <span class="class-level level-${s.class_types?.level}">${s.class_types?.level || 'all'}</span>
+              ${user
+                ? `<button class="btn-primary btn-book" data-id="${s.id}">Book</button>`
+                : `<a href="login.html" class="btn-primary">Sign in to Book</a>`
+              }
+            </div>
+          </div>
+        `
+      }).join('')
+
+      // Booking handler
+      if (user) {
+        document.querySelectorAll('.btn-book').forEach(btn => {
+          btn.addEventListener('click', async () => {
+            const scheduleId = btn.dataset.id
+            btn.textContent = 'Booking...'
+            btn.disabled = true
+
+            const { error } = await supabase.from('bookings').insert({
+              user_id: user.id,
+              schedule_id: scheduleId,
+              status: 'confirmed'
+            })
+
+            if (error) {
+              btn.textContent = error.code === '23505' ? 'Already Booked ✓' : 'Failed'
+              btn.style.background = error.code === '23505' ? '#8a6060' : '#e57373'
+            } else {
+              btn.textContent = 'Booked! ✓'
+              btn.style.background = '#7b9c7b'
+            }
+          })
+        })
+      }
+    }
+  </script>
+</body>
+</html>
