@@ -686,3 +686,134 @@
   }
   
   .btn-book:disabled { opacity: 0.7; cursor: default; }
+  /* ADMIN */
+.admin-layout {
+    display: flex;
+    min-height: 90vh;
+  }
+  
+  .admin-sidebar {
+    width: 220px;
+    background: white;
+    border-right: 1px solid #f0e0db;
+    padding: 2rem 1.5rem;
+    flex-shrink: 0;
+  }
+  
+  .admin-nav {
+    list-style: none;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  
+  .admin-link {
+    display: block;
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #8a6060;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+  
+  .admin-link:hover, .admin-link.active {
+    background: #faeae6;
+    color: #c47b7b;
+    font-weight: 500;
+  }
+  
+  .admin-content {
+    flex: 1;
+    padding: 2.5rem;
+    background: #fdf8f6;
+  }
+  
+  .admin-tab { display: none; }
+  .admin-tab.active { display: block; }
+  
+  .admin-tab h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: #2d2020;
+    margin-bottom: 1.5rem;
+  }
+  
+  .admin-tab-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .admin-tab-header h2 { margin-bottom: 0; }
+  
+  .admin-form {
+    background: white;
+    border: 1px solid #f0e0db;
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.5rem;
+    max-width: 500px;
+  }
+  
+  .admin-form h3 {
+    font-family: 'Playfair Display', serif;
+    color: #2d2020;
+    margin-bottom: 1rem;
+  }
+  
+  .admin-form select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #f0e0db;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-family: 'DM Sans', sans-serif;
+    color: #2d2020;
+    background: #fdf8f6;
+    outline: none;
+  }
+  
+  .admin-table-wrap { overflow-x: auto; }
+  
+  .admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #f0e0db;
+  }
+  
+  .admin-table th {
+    background: #faeae6;
+    padding: 0.9rem 1.2rem;
+    text-align: left;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #8a6060;
+    font-weight: 600;
+  }
+  
+  .admin-table td {
+    padding: 0.9rem 1.2rem;
+    border-top: 1px solid #f0e0db;
+    font-size: 0.9rem;
+    color: #2d2020;
+  }
+  
+  .btn-delete {
+    background: #fce4e4;
+    color: #c47b7b;
+    border: none;
+    padding: 0.3rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .btn-delete:hover { background: #c47b7b; color: white; }
