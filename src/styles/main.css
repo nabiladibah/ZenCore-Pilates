@@ -320,3 +320,106 @@
     color: #8a6060;
     font-size: 0.85rem;
   }
+  /* AUTH PAGES */
+.auth-page {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6rem;
+    padding: 4rem;
+    background: linear-gradient(135deg, #fdf8f6 0%, #faeae6 100%);
+  }
+  
+  .auth-left {
+    max-width: 380px;
+  }
+  
+  .auth-left h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #2d2020;
+    line-height: 1.2;
+    margin: 1rem 0;
+  }
+  
+  .auth-left p {
+    color: #8a6060;
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+  
+  .auth-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    width: 380px;
+    border: 1px solid #f0e0db;
+    box-shadow: 0 8px 40px rgba(196,123,123,0.08);
+  }
+  
+  .auth-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: #2d2020;
+    margin-bottom: 0.4rem;
+  }
+  
+  .auth-sub {
+    font-size: 0.85rem;
+    color: #8a6060;
+    margin-bottom: 1.8rem;
+  }
+  
+  .auth-sub a {
+    color: #c47b7b;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+  
+  .form-group label {
+    display: block;
+    font-size: 0.85rem;
+    color: #6b4f4f;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #f0e0db;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-family: 'DM Sans', sans-serif;
+    color: #2d2020;
+    background: #fdf8f6;
+    outline: none;
+    transition: border 0.2s;
+  }
+  
+  .form-group input:focus {
+    border-color: #c47b7b;
+    background: white;
+  }
+  
+  .btn-full {
+    width: 100%;
+    padding: 0.9rem;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+  }
+  
+  .auth-msg {
+    text-align: center;
+    font-size: 0.85rem;
+    margin-top: 1rem;
+    min-height: 1.2rem;
+  }
