@@ -520,3 +520,80 @@
     border-radius: 12px;
     border: 1px dashed #f0e0db;
   }
+
+  /* PAGE HEADER */
+.page-header {
+    text-align: center;
+    padding: 4rem 2rem 2rem;
+    background: linear-gradient(135deg, #fdf8f6 0%, #faeae6 100%);
+  }
+  
+  .page-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    color: #2d2020;
+    margin: 0.5rem 0;
+  }
+  
+  .page-header p { color: #8a6060; }
+  
+  /* CLASSES GRID */
+  .classes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+  }
+  
+  .class-card {
+    background: white;
+    border: 1px solid #f0e0db;
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    transition: all 0.2s;
+  }
+  
+  .class-card:hover {
+    border-color: #c47b7b;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(196,123,123,0.1);
+  }
+  
+  .class-level {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    width: fit-content;
+  }
+  
+  .level-beginner { background: #e8f5e9; color: #4caf50; }
+  .level-intermediate { background: #fff3e0; color: #ff9800; }
+  .level-advanced { background: #fce4e4; color: #c47b7b; }
+  
+  .class-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: #2d2020;
+  }
+  
+  .class-card p {
+    font-size: 0.9rem;
+    color: #8a6060;
+    line-height: 1.6;
+    flex: 1;
+  }
+  
+  .class-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: #8a6060;
+  }
