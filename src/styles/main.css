@@ -322,18 +322,21 @@
   }
   /* AUTH PAGES */
 .auth-page {
-    min-height: 90vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6rem;
-    padding: 4rem;
-    background: linear-gradient(135deg, #fdf8f6 0%, #faeae6 100%);
+    .auth-page {
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6rem;
+        padding: 4rem;
+        background: linear-gradient(135deg, #fdf8f6 0%, #faeae6 100%);
+      }
   }
   
   .auth-left {
-    max-width: 380px;
-  }
+        max-width: 380px;
+        text-align: left;
+      }  
   
   .auth-left h1 {
     font-family: 'Playfair Display', serif;
