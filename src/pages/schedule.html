@@ -46,7 +46,7 @@
     const today = new Date().toISOString().split('T')[0]
     const { data: schedules } = await supabase
       .from('schedules')
-      .select(`id, date, time, room, status, class_type_id, class_types(name, level, duration_minutes)`)
+      .select(`id, date, time, room, status, instructor_name, class_type_id, class_types(name, level, duration_minutes)`)
       .eq('status', 'active')
       .order('date')
       .order('time')
@@ -74,7 +74,7 @@
                 <span> ${time}</span>
                 <span>⏱ ${s.class_types?.duration_minutes || 60} min</span>
                 <span>📍 ${s.room || 'Studio A'}</span>
-                <span>👩‍🏫 TBA</span>
+                <span>👩‍🏫 ${s.instructor_name || 'TBA'}</span>
               </div>
             </div>
             <div class="schedule-action">
