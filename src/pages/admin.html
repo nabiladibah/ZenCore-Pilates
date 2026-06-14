@@ -29,6 +29,7 @@
         <li><a href="#" class="admin-link" data-tab="schedules">📅 Manage Schedules</a></li>
         <li><a href="#" class="admin-link" data-tab="bookings">📋 All Bookings</a></li>
         <li><a href="#" class="admin-link" data-tab="members">👥 Members</a></li>
+        <li><a href="#" class="admin-link" data-tab="messages">✉️ Messages</a></li>
       </ul>
     </div>
 
@@ -140,12 +141,15 @@
       </div>
 
       <!-- MEMBERS -->
-      <div id="tab-members" class="admin-tab">
-        <h2>Members</h2>
-        <div id="members-table" class="admin-table-wrap"></div>
-      </div>
-
-    </div>
+<div id="tab-members" class="admin-tab">
+    <h2>Members</h2>
+    <div id="members-table" class="admin-table-wrap"></div>
+  </div>
+  
+  <!-- MESSAGES -->
+  <div id="tab-messages" class="admin-tab">
+    <h2>Contact Messages</h2>
+    <div id="messages-table" class="admin-table-wrap"></div>
   </div>
 
   <script type="module">
@@ -278,6 +282,23 @@
           `).join('')}</tbody>
         </table>`
     }
+    async function loadMessages() {
+      const { data } = await supabase.from('contact_messages').select('*').order('created_at', { ascending: false })
+      const wrap = document.getElementById('messages-table')
+      if (!data?.length) { wrap.innerHTML = '<p class="empty-msg">No messages yet.</p>'; return }
+      wrap.innerHTML = `
+        <table class="admin-table">
+          <thead><tr><th>Name</th><th>Email</th><th>Message</th><th>Date</th></tr></thead>
+          <tbody>${data.map(m => `
+            <tr>
+              <td>${m.name}</td>
+              <td>${m.email}</td>
+              <td>${m.message}</td>
+              <td>${new Date(m.created_at).toLocaleDateString('en-US')}</td>
+            </tr>
+          `).join('')}</tbody>
+        </table>`
+    }
 
     function loadTab(tab) {
       if (tab === 'overview') loadOverview()
@@ -285,6 +306,7 @@
       if (tab === 'schedules') loadSchedules()
       if (tab === 'bookings') loadBookings()
       if (tab === 'members') loadMembers()
+      if (tab === 'messages') loadMessages()
     }
 
     loadOverview()
