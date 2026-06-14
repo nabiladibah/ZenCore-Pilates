@@ -833,3 +833,134 @@
     background: #c47b7b;
     color: white;
   }
+  /* ABOUT PAGE */
+.about-content {
+    max-width: 1100px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  
+  .about-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #2d2020;
+    margin-bottom: 1rem;
+  }
+  
+  .about-text p {
+    color: #8a6060;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+  }
+  
+  .about-values {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  
+  .value-card {
+    background: white;
+    border: 1px solid #f0e0db;
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .value-card .icon { font-size: 1.8rem; }
+  
+  .value-card h3 {
+    font-size: 1rem;
+    color: #2d2020;
+    margin-bottom: 0.3rem;
+  }
+  
+  .value-card p {
+    font-size: 0.88rem;
+    color: #8a6060;
+    line-height: 1.5;
+  }
+  
+  /* CONTACT */
+  .contact-section {
+    max-width: 1100px;
+    margin: 2rem auto 5rem;
+    padding: 3rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    background: linear-gradient(135deg, #fdf8f6 0%, #faeae6 100%);
+    border-radius: 24px;
+  }
+  
+  .contact-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #2d2020;
+    margin: 0.5rem 0 1.5rem;
+  }
+  
+  .contact-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .contact-item span { font-size: 1.4rem; }
+  
+  .contact-item h4 {
+    font-size: 0.95rem;
+    color: #2d2020;
+    margin-bottom: 0.2rem;
+  }
+  
+  .contact-item p {
+    font-size: 0.88rem;
+    color: #8a6060;
+    line-height: 1.5;
+  }
+  
+  .contact-form-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid #f0e0db;
+  }
+  
+  .contact-form-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: #2d2020;
+    margin-bottom: 1.2rem;
+  }
+  
+  .contact-form-card textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #f0e0db;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-family: 'DM Sans', sans-serif;
+    color: #2d2020;
+    background: #fdf8f6;
+    outline: none;
+    resize: vertical;
+    transition: border 0.2s;
+  }
+  
+  .contact-form-card textarea:focus {
+    border-color: #c47b7b;
+    background: white;
+  }
+  
+  @media (max-width: 768px) {
+    .about-content, .contact-section {
+      grid-template-columns: 1fr;
+    }
+  }
