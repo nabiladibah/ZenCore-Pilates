@@ -88,23 +88,49 @@
         `
       }).join('')
 
-      // Booking handler
-      if (user) {
+// Booking handler
+if (user) {
         document.querySelectorAll('.btn-book').forEach(btn => {
           btn.addEventListener('click', async () => {
             const scheduleId = btn.dataset.id
             btn.textContent = 'Booking...'
             btn.disabled = true
 
-            const { error } = await supabase.from('bookings').insert({
-              user_id: user.id,
-              schedule_id: scheduleId,
-              status: 'confirmed'
-            })
+            // Cek apakah sudah pernah booking kelas ini
+            const { data: existing } = await supabase
+              .from('bookings')
+              .select('id, status')
+              .eq('user_id', user.id)
+              .eq('schedule_id', scheduleId)
+              .maybeSingle()
+
+            let error
+
+            if (existing) {
+              if (existing.status === 'cancelled') {
+                // Aktifkan ulang booking yang sudah di-cancel
+                const result = await supabase
+                  .from('bookings')
+                  .update({ status: 'confirmed' })
+                  .eq('id', existing.id)
+                error = result.error
+              } else {
+                btn.textContent = 'Already Booked ✓'
+                btn.style.background = '#8a6060'
+                return
+              }
+            } else {
+              const result = await supabase.from('bookings').insert({
+                user_id: user.id,
+                schedule_id: scheduleId,
+                status: 'confirmed'
+              })
+              error = result.error
+            }
 
             if (error) {
-              btn.textContent = error.code === '23505' ? 'Already Booked ✓' : 'Failed'
-              btn.style.background = error.code === '23505' ? '#8a6060' : '#e57373'
+              btn.textContent = 'Failed'
+              btn.style.background = '#e57373'
             } else {
               btn.textContent = 'Booked! ✓'
               btn.style.background = '#7b9c7b'
@@ -112,7 +138,7 @@
           })
         })
       }
-    }
+            }
   </script>
 </body>
 </html>
