@@ -416,11 +416,24 @@
   /* ── AUTH PAGES ── */
   .auth-page {
     min-height: 90vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    background: linear-gradient(135deg, #cde0e8 0%, #bdd4c8 100%);
+  }
+
+  .auth-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 4rem 5rem 6rem;
+  }
+  
+  .auth-right {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 4rem 2rem;
-    background: linear-gradient(135deg, #cde0e8 0%, #bdd4c8 100%);
+    padding: 3rem 2rem;
   }
   
   .auth-card {
