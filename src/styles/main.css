@@ -91,7 +91,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 4rem 4rem 4rem 6rem;
-    background: linear-gradient(160deg, #cde0e8 0%, #bdd4c8 50%, #d0ddc8 100%);
+    background: linear-gradient(160deg, #d5e4ef  0%, #ffffff 50%, #f7f8f8 100%);
     position: relative;
     overflow: hidden;
   }
@@ -419,7 +419,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    background: linear-gradient(135deg, #cde0e8 0%, #bdd4c8 100%);
+    background: linear-gradient(135deg, #dbecf3 0%, #bdd4c8 100%);
   }
 
   .auth-left {

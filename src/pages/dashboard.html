@@ -26,7 +26,7 @@
     <div class="dashboard-header">
       <div>
         <p class="section-tag">✦ Member Dashboard</p>
-        <h1>Welcome back, <span id="greeting-name">there</span> 🌸</h1>
+        <h1>Welcome back, <span id="greeting-name">there</span> </h1>
         <p>Here's what's coming up for you.</p>
       </div>
       <a href="schedule.html" class="btn-primary">Book a Class</a>
@@ -110,8 +110,8 @@ document.getElementById('total-bookings').textContent = activeBookings.length
         <div class="booking-card">
           <div class="booking-info">
             <h4>${b.schedules?.class_types?.name || 'Class'}</h4>
-            <p>📅 ${b.schedules?.date} &nbsp;⏰ ${b.schedules?.time?.slice(0,5)}</p>
-            <p>📍 ${b.schedules?.room || 'TBA'}</p>
+            <p> ${b.schedules?.date} &nbsp; ${b.schedules?.time?.slice(0,5)}</p>
+            <p> ${b.schedules?.room || 'TBA'}</p>
           </div>
           <div style="display:flex; flex-direction:column; align-items:flex-end; gap:0.5rem">
   <span class="booking-status status-${b.status}">${b.status}</span>
