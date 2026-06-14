@@ -92,7 +92,7 @@
       .order('booked_at', { ascending: false })
 
     const today = new Date().toISOString().split('T')[0]
-    const upcoming = bookings?.filter(b => b.schedules?.date >= today) || []
+    const upcoming = bookings?.filter(b => b.schedules?.date >= today && b.status !== 'cancelled') || []
     const history = bookings?.filter(b => b.schedules?.date < today) || []
 
     document.getElementById('total-bookings').textContent = bookings?.length || 0
@@ -135,6 +135,8 @@ document.querySelectorAll('.btn-cancel-booking').forEach(btn => {
       btn.closest('.booking-card').querySelector('.booking-status').className = 'booking-status status-cancelled'
       btn.closest('.booking-card').querySelector('.booking-status').textContent = 'cancelled'
       btn.remove()
+const upcomingEl = document.getElementById('upcoming-bookings')
+upcomingEl.textContent = Math.max(0, parseInt(upcomingEl.textContent) - 1)
     }
   })
 })
