@@ -137,6 +137,8 @@ document.querySelectorAll('.btn-cancel-booking').forEach(btn => {
       btn.remove()
 const upcomingEl = document.getElementById('upcoming-bookings')
 upcomingEl.textContent = Math.max(0, parseInt(upcomingEl.textContent) - 1)
+const totalEl = document.getElementById('total-bookings')
+totalEl.textContent = Math.max(0, parseInt(totalEl.textContent) - 1)
     }
   })
 })
